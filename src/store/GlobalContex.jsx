@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from 'react'
-import { GlobalReducer } from './GlobalReducer'
+import { GlobalReducer } from './reducers/GlobalReducer'
 
 //initial state
 const initialState = {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { GlobalProvider } from './store/globalContext/GlobalContex'
+import { GlobalProvider } from './store/GlobalContex'
 import { Header, Footer } from './components/layout'
 import Exercises from './components/exercises'
 

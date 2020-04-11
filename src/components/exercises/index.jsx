@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from 'react'
 
-import { GlobalContext } from '../../store/globalContext/GlobalContex'
+import { GlobalContext } from '../../store/GlobalContex'
+import {getExercises} from '../../store/actions/GlobalActions'
 
 import { Paper, Grid } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
@@ -17,27 +18,21 @@ const useStyles = makeStyles((theme) => ({
 
 const Exercises = () => {
   const { state, dispatch } = useContext(GlobalContext)
-  useEffect(() => {
-    axios
-      .get('http://localhost:8000/exercises')
-      .then((res) => {
-        console.log(res.data)
 
-        dispatch({
-          type: 'GET_EXERCISES',
-          payload: res.data,
-        })
-      })
-      .catch((err) => console.log(err))
+  useEffect(() => {
+    getExercises(dispatch)
+
   }, [dispatch])
+
   const classes = useStyles()
+
   return (
     <Grid container spacing={2}>
       <Grid item sm>
         <Paper className={classes.paper}>
           <ul>
-            {state.exercises.map((item) => (
-              <li>{item.title}</li>
+            {state.exercises.map(([group, exercises]) => (
+              <li>{group}</li>
             ))}
           </ul>
         </Paper>
