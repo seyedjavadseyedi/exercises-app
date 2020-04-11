@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Paper, Grid } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
+
+import axios from 'axios'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -11,6 +13,12 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const Exercises = () => {
+  useEffect(() => {
+    axios
+      .get('http://localhost:8000/exercises')
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err))
+  }, [])
   const classes = useStyles()
   return (
     <Grid container spacing={2}>
