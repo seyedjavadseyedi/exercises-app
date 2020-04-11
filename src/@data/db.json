@@ -1,0 +1,49 @@
+{
+    "muscles" : [
+        "shoulders", "chest", "arms", "back", "legs"
+    ],
+    "exercises" : [
+        {
+            "id": "overhead-press",
+            "title": "Overhead press",
+            "description": "Detail exercise ...",
+            "muscles": "shoulders"
+        },
+        {
+           "id": "dips",
+           "title": "Dips",
+           "description": "Detail exercise ...",
+           "muscles": "arms"
+       },
+       {
+           "id": "barbell-curls",
+           "title": "Barbell Curls",
+           "description": "Detail exercise ...",
+           "muscles": "arms"
+       },
+       {
+           "id": "bench-press",
+           "title": "Bench Press",
+           "description": "Detail exercise ...",
+           "muscles": "chest"
+       },
+       {
+           "id": "pull-ups",
+           "title": "Pull Ups",
+           "description": "Detail exercise ...",
+           "muscles": "back"
+       },
+       {
+           "id": "deadlifts",
+           "title": "Deadlifts",
+           "description": "Detail exercise ...",
+           "muscles": "back"
+       },
+       {
+           "id": "squats",
+           "title": "Squats",
+           "description": "Detail exercise ...",
+           "muscles": "legs"
+       }
+    ]
+   }
