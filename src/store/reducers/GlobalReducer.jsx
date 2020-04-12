@@ -1,4 +1,4 @@
-import {GET_MUSCLES} from '../actions/types'
+import {GET_MUSCLES, GET_EXERCISES_BY_MUSCLES} from '../actions/types'
 
 export const GlobalReducer = (state, action) => {
   switch (action.type) {
@@ -7,7 +7,7 @@ export const GlobalReducer = (state, action) => {
         ...state,
         muscles: action.payload,
       }
-    case 'GET_EXERCISES':
+    case GET_EXERCISES_BY_MUSCLES:
       
       return {
         ...state,

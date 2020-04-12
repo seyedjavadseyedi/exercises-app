@@ -1,18 +1,25 @@
 import React, { useEffect, useContext } from 'react'
 
 import { GlobalContext } from '../../store/GlobalContex'
-import {getExercises} from '../../store/actions/GlobalActions'
+import { getExercisesByMuscles } from '../../store/actions/GlobalActions'
 
-import { Paper, Grid } from '@material-ui/core'
+import {
+  Paper,
+  Grid,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-
-import axios from 'axios'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     marginTop: 10,
     marginBottom: 10,
+    height: 500,
+    overflowY: 'auto'
   },
 }))
 
@@ -20,8 +27,7 @@ const Exercises = () => {
   const { state, dispatch } = useContext(GlobalContext)
 
   useEffect(() => {
-    getExercises(dispatch)
-
+    getExercisesByMuscles(dispatch)
   }, [dispatch])
 
   const classes = useStyles()
@@ -30,15 +36,27 @@ const Exercises = () => {
     <Grid container spacing={2}>
       <Grid item sm>
         <Paper className={classes.paper}>
-          <ul>
-            {state.exercises.map(([group, exercises]) => (
-              <li>{group}</li>
-            ))}
-          </ul>
+          {state.exercises.map(([group, exercises]) => (
+            <React.Fragment key={group}>
+              <Typography variant='h5'>{group}</Typography>
+              <List component='ul'>
+                {exercises.map(({ title, id }) => (
+                  <ListItem key={id} button dense>
+                    <ListItemText primary={title} />
+                  </ListItem>
+                ))}
+              </List>
+            </React.Fragment>
+          ))}
         </Paper>
       </Grid>
       <Grid item sm>
-        <Paper className={classes.paper}>right panel</Paper>
+        <Paper className={classes.paper}>
+          <Typography variant='h4'>Welcome!</Typography>
+          <Typography variant='body1'>
+            Please select an exercise from the list on the left
+          </Typography>
+        </Paper>
       </Grid>
     </Grid>
   )

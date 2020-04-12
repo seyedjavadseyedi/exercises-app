@@ -1,4 +1,4 @@
-import { GET_MUSCLES, GET_EXERCISES } from './types'
+import { GET_MUSCLES, GET_EXERCISES_BY_MUSCLES } from './types'
 import axios from 'axios'
 
 export const getMuscles = (dispatch) => {
@@ -13,7 +13,7 @@ export const getMuscles = (dispatch) => {
     .catch((err) => console.log(err))
 }
 
-export const getExercises = (dispatch) => {
+export const getExercisesByMuscles = (dispatch) => {
   axios
     .get('http://localhost:8000/exercises')
     .then((res) => {
@@ -27,7 +27,7 @@ export const getExercises = (dispatch) => {
         }, {})
       )
       dispatch({
-        type: GET_EXERCISES,
+        type: GET_EXERCISES_BY_MUSCLES,
         payload: exercises
       })
     })
