@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_MUSCLES, GET_EXERCISES_BY_MUSCLES, SET_CATEGORY, SELECTED_EXERCISE } from './types'
+import { GET_MUSCLES, GET_EXERCISES_BY_MUSCLES, SET_CATEGORY, SELECTED_EXERCISE, TOGGLE_DIALOG } from './types'
 
 export const getMuscles = (dispatch) => {
   axios
@@ -45,5 +45,12 @@ export const selectedExercise = (dispatch, exercise) => {
   dispatch({
     type: SELECTED_EXERCISE,
     payload: exercise
+  })
+}
+
+export const toggleDialog = (dispatch, open) => {
+  dispatch({
+    type: TOGGLE_DIALOG,
+    payload: open
   })
 }

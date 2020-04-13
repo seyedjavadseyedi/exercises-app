@@ -1,4 +1,10 @@
-import { GET_MUSCLES, GET_EXERCISES_BY_MUSCLES, SET_CATEGORY, SELECTED_EXERCISE } from '../actions/types'
+import {
+  GET_MUSCLES,
+  GET_EXERCISES_BY_MUSCLES,
+  SET_CATEGORY,
+  SELECTED_EXERCISE,
+  TOGGLE_DIALOG
+} from '../actions/types'
 
 //initial state
 export const initialState = {
@@ -8,7 +14,10 @@ export const initialState = {
   exercise: {
     id: '',
     title: 'Welcome',
-    description: 'Please select an exercise from the list on the left'
+    description: 'Please select an exercise from the list on the left',
+  },
+  dialog: {
+    open: false,
   }
 }
 
@@ -29,11 +38,18 @@ export const GlobalReducer = (state, action) => {
         ...state,
         category: action.payload,
       }
-     case SELECTED_EXERCISE: 
-     return {
-       ...state,
-       exercise: action.payload
-     } 
+    case SELECTED_EXERCISE:
+      return {
+        ...state,
+        exercise: action.payload,
+      }
+    case TOGGLE_DIALOG:
+      return {
+        ...state,
+        dialog: {
+          open: !action.payload,
+        }
+      }
     default:
       return state
   }

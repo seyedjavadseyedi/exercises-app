@@ -1,4 +1,7 @@
-import React, { useState } from 'react'
+import React, {useEffect, useContext } from 'react'
+import { GlobalContext } from "../../store/GlobalContex";
+import { toggleDialog } from "../../store/actions/GlobalActions";
+
 
 import {
   Fab,
@@ -13,19 +16,16 @@ import {
 import AddIcon from '@material-ui/icons/Add'
 
 const AddExercise = () => {
-  const [open, setOpen] = useState(false)
+  const {state: {dialog: {open}}, dispatch} = useContext(GlobalContext)
 
-  const toggleDialog = () => {
-    setOpen(!open)
-  }
 
   return (
     <>
-      <Fab color='secondary' size='medium' onClick={toggleDialog}>
+      <Fab color='secondary' size='medium' onClick={() => toggleDialog(dispatch, open)}>
         <AddIcon />
       </Fab>
 
-      <Dialog open={open} onClose={toggleDialog}>
+      <Dialog open={open} onClose={() => toggleDialog(dispatch, open)}>
         <DialogTitle>Create a new exercise</DialogTitle>
 
         <DialogContent>
