@@ -19,12 +19,12 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 10,
     marginBottom: 10,
     height: 500,
-    overflowY: 'auto'
+    overflowY: 'auto',
   },
 }))
 
 const Exercises = () => {
-  const { state, dispatch } = useContext(GlobalContext)
+  const { state: {exercises, category}, dispatch } = useContext(GlobalContext)
 
   useEffect(() => {
     getExercisesByMuscles(dispatch)
@@ -36,18 +36,20 @@ const Exercises = () => {
     <Grid container spacing={2}>
       <Grid item sm>
         <Paper className={classes.paper}>
-          {state.exercises.map(([group, exercises]) => (
-            <React.Fragment key={group}>
-              <Typography variant='h5'>{group}</Typography>
-              <List component='ul'>
-                {exercises.map(({ title, id }) => (
-                  <ListItem key={id} button dense>
-                    <ListItemText primary={title} />
-                  </ListItem>
-                ))}
-              </List>
-            </React.Fragment>
-          ))}
+          {exercises.map(([group, exercises]) =>
+            !category || category === group ? (
+              <React.Fragment key={group}>
+                <Typography variant='h5'>{group}</Typography>
+                <List component='ul'>
+                  {exercises.map(({ title, id }) => (
+                    <ListItem key={id} button dense>
+                      <ListItemText primary={title} />
+                    </ListItem>
+                  ))}
+                </List>
+              </React.Fragment>
+            ) : null
+          )}
         </Paper>
       </Grid>
       <Grid item sm>

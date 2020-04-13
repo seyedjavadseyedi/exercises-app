@@ -1,22 +1,38 @@
 import React, { useEffect, useContext } from 'react'
 import { GlobalContext } from '../../store/GlobalContex'
-import { getMuscles } from '../../store/actions/GlobalActions'
+import { getMuscles, setCategory } from '../../store/actions/GlobalActions'
 
 import { Paper, Tabs, Tab } from '@material-ui/core'
 
 const Footer = () => {
-  const { state, dispatch } = useContext(GlobalContext)
+  const {
+    state: { category, muscles },
+    dispatch,
+  } = useContext(GlobalContext)
+
+  const index = category
+    ? muscles.findIndex((group) => group === category) + 1
+    : 0
+  const onSelected = (e, index) => {
+    const selectedCategory = index === 0 ? undefined : muscles[index - 1]
+    setCategory(dispatch, selectedCategory)
+  }
 
   useEffect(() => {
     getMuscles(dispatch)
-
   }, [dispatch])
 
   return (
     <Paper>
-      <Tabs indicatorColor='primary' value={0} centered textColor='primary'>
+      <Tabs
+        indicatorColor='primary'
+        value={index}
+        onChange={onSelected}
+        centered
+        textColor='primary'
+      >
         <Tab label='All'></Tab>
-        {state.muscles.map((item, index) => (
+        {muscles.map((item, index) => (
           <Tab key={index} label={item}></Tab>
         ))}
       </Tabs>

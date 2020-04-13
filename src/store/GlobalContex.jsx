@@ -1,11 +1,6 @@
 import React, { createContext, useReducer } from 'react'
-import { GlobalReducer } from './reducers/GlobalReducer'
+import { GlobalReducer, initialState } from './reducers/GlobalReducer'
 
-//initial state
-const initialState = {
-  muscles: [],
-  exercises: [],
-}
 
 // create global context
 const GlobalContext = createContext()
