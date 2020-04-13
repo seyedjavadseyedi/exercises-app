@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import { GlobalContext } from '../../store/GlobalContex'
-import { getMuscles, setCategory } from '../../store/actions/GlobalActions'
+import { getMuscles, selectedCategory } from '../../store/actions/GlobalActions'
 
 import { Paper, Tabs, Tab } from '@material-ui/core'
 
@@ -14,8 +14,8 @@ const Footer = () => {
     ? muscles.findIndex((group) => group === category) + 1
     : 0
   const onSelected = (e, index) => {
-    const selectedCategory = index === 0 ? undefined : muscles[index - 1]
-    setCategory(dispatch, selectedCategory)
+    const categoryItem = index !== 0 ?  muscles[index - 1] : 0
+    selectedCategory(dispatch, categoryItem)
   }
 
   useEffect(() => {

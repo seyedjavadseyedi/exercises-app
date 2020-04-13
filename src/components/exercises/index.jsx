@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     marginTop: 10,
     marginBottom: 10,
-    height: 500,
+    height: 400,
     overflowY: 'auto',
   },
 }))
@@ -42,9 +42,6 @@ const Exercises = () => {
 
   const classes = useStyles()
 
-  const onSelected = (exercise) => {
-    selectedExercise(dispatch, exercise)
-  }
 
   return (
     <Grid container spacing={2}>
@@ -60,7 +57,7 @@ const Exercises = () => {
                       key={exercise.id}
                       button
                       dense
-                      onClick={() => onSelected(exercise)}
+                      onClick={() => selectedExercise(dispatch, exercise)}
                     >
                       <ListItemText primary={exercise.title} />
                     </ListItem>

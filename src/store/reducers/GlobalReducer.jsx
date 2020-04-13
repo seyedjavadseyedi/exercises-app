@@ -1,7 +1,7 @@
 import {
   GET_MUSCLES,
   GET_EXERCISES_BY_MUSCLES,
-  SET_CATEGORY,
+  SELECTED_CATEGORY,
   SELECTED_EXERCISE,
   TOGGLE_DIALOG
 } from '../actions/types'
@@ -33,7 +33,7 @@ export const GlobalReducer = (state, action) => {
         ...state,
         exercises: action.payload,
       }
-    case SET_CATEGORY:
+    case SELECTED_CATEGORY:
       return {
         ...state,
         category: action.payload,

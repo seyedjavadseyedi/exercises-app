@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { GET_MUSCLES, GET_EXERCISES_BY_MUSCLES, SET_CATEGORY, SELECTED_EXERCISE, TOGGLE_DIALOG } from './types'
+import { GET_MUSCLES, GET_EXERCISES_BY_MUSCLES, SELECTED_CATEGORY, SELECTED_EXERCISE, TOGGLE_DIALOG } from './types'
+
 
 export const getMuscles = (dispatch) => {
   axios
@@ -34,10 +35,10 @@ export const getExercisesByMuscles = (dispatch) => {
     .catch((err) => console.log(err))
 }
 
-export const setCategory = (dispatch, selectedCategory) => {
+export const selectedCategory = (dispatch, categoryItem) => {
   dispatch({
-    type: SET_CATEGORY,
-    payload: selectedCategory,
+    type: SELECTED_CATEGORY,
+    payload: categoryItem,
   })
 }
 
