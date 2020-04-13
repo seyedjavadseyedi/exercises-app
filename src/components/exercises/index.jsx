@@ -1,7 +1,10 @@
 import React, { useEffect, useContext } from 'react'
 
 import { GlobalContext } from '../../store/GlobalContex'
-import { getExercisesByMuscles } from '../../store/actions/GlobalActions'
+import {
+  getExercisesByMuscles,
+  selectedExercise,
+} from '../../store/actions/GlobalActions'
 
 import {
   Paper,
@@ -24,13 +27,24 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const Exercises = () => {
-  const { state: {exercises, category}, dispatch } = useContext(GlobalContext)
+  const {
+    state: {
+      exercises,
+      category,
+      exercise: { title, description },
+    },
+    dispatch,
+  } = useContext(GlobalContext)
 
   useEffect(() => {
     getExercisesByMuscles(dispatch)
   }, [dispatch])
 
   const classes = useStyles()
+
+  const onSelected = (exercise) => {
+    selectedExercise(dispatch, exercise)
+  }
 
   return (
     <Grid container spacing={2}>
@@ -41,9 +55,14 @@ const Exercises = () => {
               <React.Fragment key={group}>
                 <Typography variant='h5'>{group}</Typography>
                 <List component='ul'>
-                  {exercises.map(({ title, id }) => (
-                    <ListItem key={id} button dense>
-                      <ListItemText primary={title} />
+                  {exercises.map((exercise) => (
+                    <ListItem
+                      key={exercise.id}
+                      button
+                      dense
+                      onClick={() => onSelected(exercise)}
+                    >
+                      <ListItemText primary={exercise.title} />
                     </ListItem>
                   ))}
                 </List>
@@ -54,10 +73,8 @@ const Exercises = () => {
       </Grid>
       <Grid item sm>
         <Paper className={classes.paper}>
-          <Typography variant='h4'>Welcome!</Typography>
-          <Typography variant='body1'>
-            Please select an exercise from the list on the left
-          </Typography>
+          <Typography variant='h4'>{title}</Typography>
+          <Typography variant='body1'>{description}</Typography>
         </Paper>
       </Grid>
     </Grid>

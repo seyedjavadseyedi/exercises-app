@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_MUSCLES, GET_EXERCISES_BY_MUSCLES, SET_CATEGORY } from './types'
+import { GET_MUSCLES, GET_EXERCISES_BY_MUSCLES, SET_CATEGORY, SELECTED_EXERCISE } from './types'
 
 export const getMuscles = (dispatch) => {
   axios
@@ -38,5 +38,12 @@ export const setCategory = (dispatch, selectedCategory) => {
   dispatch({
     type: SET_CATEGORY,
     payload: selectedCategory,
+  })
+}
+
+export const selectedExercise = (dispatch, exercise) => {
+  dispatch({
+    type: SELECTED_EXERCISE,
+    payload: exercise
   })
 }
