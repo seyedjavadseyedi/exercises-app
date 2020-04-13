@@ -47,7 +47,7 @@ export const GlobalReducer = (state, action) => {
       return {
         ...state,
         dialog: {
-          open: !action.payload,
+          open: action.payload,
         }
       }
     default:

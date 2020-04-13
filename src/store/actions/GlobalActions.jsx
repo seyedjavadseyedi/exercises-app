@@ -52,6 +52,6 @@ export const selectedExercise = (dispatch, exercise) => {
 export const toggleDialog = (dispatch, open) => {
   dispatch({
     type: TOGGLE_DIALOG,
-    payload: open
+    payload: !open
   })
 }
