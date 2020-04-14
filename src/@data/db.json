@@ -48,12 +48,6 @@
       "title": "Squats",
       "description": "Detail exercise squats...",
       "muscles": "legs"
-    },
-    {
-      "id": "spiderman-push-ups",
-      "title": "Spiderman Push Ups",
-      "description": "chest and legs",
-      "muscles": "chest"
     }
   ]
 }

@@ -56,6 +56,11 @@ export const GlobalReducer = (state, action) => {
         dialog: {
           open: action.payload,
         },
+        newExercise: {
+          title: '',
+          description: '',
+          muscles: '',
+        },
       }
     case SET_FORM_ITEMS:
       return {
@@ -68,13 +73,6 @@ export const GlobalReducer = (state, action) => {
         newExercise: action.payload,
         dialog: {
           open: false,
-        },
-        state: {
-          newExercise: {
-            title: '',
-            description: '',
-            muscles: '',
-          },
         }
       }
     default:

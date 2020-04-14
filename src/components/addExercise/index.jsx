@@ -38,24 +38,26 @@ const AddExercise = () => {
   const {
     state: {
       dialog: { open },
-       // change muscles name to the category to prevent conflict
+      // change muscles name to the category to prevent conflict
       muscles: categories,
       newExercise,
     },
     dispatch,
   } = useContext(GlobalContext)
 
-  useEffect(() => {
-    getExercisesByMuscles(dispatch)
-  }, [dispatch, newExercise])
-
   const handleFormItems = (name) => ({ target: { value } }) => {
     const newItem = {
       ...newExercise,
       [name]: value,
     }
+
     setFormItems(dispatch, newItem)
   }
+
+
+  useEffect(() => {
+    getExercisesByMuscles(dispatch)
+  }, [dispatch, newExercise])
 
   return (
     <>
