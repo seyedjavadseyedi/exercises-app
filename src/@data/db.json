@@ -1,49 +1,59 @@
 {
-    "muscles" : [
-        "shoulders", "chest", "arms", "back", "legs"
-    ],
-    "exercises" : [
-        {
-            "id": "overhead-press",
-            "title": "Overhead press",
-            "description": "Detail exercise overhead press ...",
-            "muscles": "shoulders"
-        },
-        {
-           "id": "dips",
-           "title": "Dips",
-           "description": "Detail exercise dips ...",
-           "muscles": "arms"
-       },
-       {
-           "id": "barbell-curls",
-           "title": "Barbell Curls",
-           "description": "Detail exercise barbell curls...",
-           "muscles": "arms"
-       },
-       {
-           "id": "bench-press",
-           "title": "Bench Press",
-           "description": "Detail exercise bench press...",
-           "muscles": "chest"
-       },
-       {
-           "id": "pull-ups",
-           "title": "Pull Ups",
-           "description": "Detail exercise pull ups...",
-           "muscles": "back"
-       },
-       {
-           "id": "deadlifts",
-           "title": "Deadlifts",
-           "description": "Detail exercise deadlifts...",
-           "muscles": "back"
-       },
-       {
-           "id": "squats",
-           "title": "Squats",
-           "description": "Detail exercise squats...",
-           "muscles": "legs"
-       }
-    ]
-   }
+  "muscles": [
+    "shoulders",
+    "chest",
+    "arms",
+    "back",
+    "legs"
+  ],
+  "exercises": [
+    {
+      "id": "overhead-press",
+      "title": "Overhead press",
+      "description": "Detail exercise overhead press ...",
+      "muscles": "shoulders"
+    },
+    {
+      "id": "dips",
+      "title": "Dips",
+      "description": "Detail exercise dips ...",
+      "muscles": "arms"
+    },
+    {
+      "id": "barbell-curls",
+      "title": "Barbell Curls",
+      "description": "Detail exercise barbell curls...",
+      "muscles": "arms"
+    },
+    {
+      "id": "bench-press",
+      "title": "Bench Press",
+      "description": "Detail exercise bench press...",
+      "muscles": "chest"
+    },
+    {
+      "id": "pull-ups",
+      "title": "Pull Ups",
+      "description": "Detail exercise pull ups...",
+      "muscles": "back"
+    },
+    {
+      "id": "deadlifts",
+      "title": "Deadlifts",
+      "description": "Detail exercise deadlifts...",
+      "muscles": "back"
+    },
+    {
+      "id": "squats",
+      "title": "Squats",
+      "description": "Detail exercise squats...",
+      "muscles": "legs"
+    },
+    {
+      "id": "spiderman-push-ups",
+      "title": "Spiderman Push Ups",
+      "description": "chest and legs",
+      "muscles": "chest"
+    }
+  ]
+}

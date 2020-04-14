@@ -1,6 +1,13 @@
 import axios from 'axios'
-import { GET_MUSCLES, GET_EXERCISES_BY_MUSCLES, SELECTED_CATEGORY, SELECTED_EXERCISE, TOGGLE_DIALOG } from './types'
-
+import {
+  GET_MUSCLES,
+  GET_EXERCISES_BY_MUSCLES,
+  SELECTED_CATEGORY,
+  SELECTED_EXERCISE,
+  TOGGLE_DIALOG,
+  SET_FORM_ITEMS,
+  ADD_NEW_EXERCISE,
+} from './types'
 
 export const getMuscles = (dispatch) => {
   axios
@@ -45,13 +52,36 @@ export const selectedCategory = (dispatch, categoryItem) => {
 export const selectedExercise = (dispatch, exercise) => {
   dispatch({
     type: SELECTED_EXERCISE,
-    payload: exercise
+    payload: exercise,
   })
 }
 
 export const toggleDialog = (dispatch, open) => {
   dispatch({
     type: TOGGLE_DIALOG,
-    payload: !open
+    payload: !open,
   })
+}
+
+export const setFormItems = (dispatch, newItem) => {
+  dispatch({
+    type: SET_FORM_ITEMS,
+    payload: newItem,
+  })
+}
+
+export const addNewExercise = (dispatch, newExercise) => {
+  const addNewItem = {
+    id: newExercise.title.toLocaleLowerCase().replace(/ /g, '-'),
+    ...newExercise,
+  }
+  axios
+    .post('http://localhost:8000/exercises', addNewItem)
+    .then(() => {
+      dispatch({
+        type: ADD_NEW_EXERCISE,
+        payload: addNewItem,
+      })
+    })
+    .catch((err) => console.log(err))
 }

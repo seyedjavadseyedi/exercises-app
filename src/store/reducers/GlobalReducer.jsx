@@ -3,7 +3,9 @@ import {
   GET_EXERCISES_BY_MUSCLES,
   SELECTED_CATEGORY,
   SELECTED_EXERCISE,
-  TOGGLE_DIALOG
+  TOGGLE_DIALOG,
+  SET_FORM_ITEMS,
+  ADD_NEW_EXERCISE,
 } from '../actions/types'
 
 //initial state
@@ -18,7 +20,12 @@ export const initialState = {
   },
   dialog: {
     open: false,
-  }
+  },
+  newExercise: {
+    title: '',
+    description: '',
+    muscles: '',
+  },
 }
 
 export const GlobalReducer = (state, action) => {
@@ -48,6 +55,26 @@ export const GlobalReducer = (state, action) => {
         ...state,
         dialog: {
           open: action.payload,
+        },
+      }
+    case SET_FORM_ITEMS:
+      return {
+        ...state,
+        newExercise: action.payload,
+      }
+    case ADD_NEW_EXERCISE:
+      return {
+        ...state,
+        newExercise: action.payload,
+        dialog: {
+          open: false,
+        },
+        state: {
+          newExercise: {
+            title: '',
+            description: '',
+            muscles: '',
+          },
         }
       }
     default:
