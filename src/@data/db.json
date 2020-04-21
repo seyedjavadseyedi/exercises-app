@@ -14,12 +14,6 @@
       "muscles": "arms"
     },
     {
-      "id": "barbell-curls",
-      "title": "Barbell Curls",
-      "description": "Detail exercise barbell curls...",
-      "muscles": "arms"
-    },
-    {
       "id": "bench-press",
       "title": "Bench Press",
       "description": "Detail exercise bench press...",

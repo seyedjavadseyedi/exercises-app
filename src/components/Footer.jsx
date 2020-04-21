@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react'
-import { GlobalContext } from '../../store/GlobalContex'
-import { getMuscles, selectedCategory } from '../../store/actions/GlobalActions'
+import { GlobalContext } from '../store/GlobalContex'
+import { getMuscles, selectedCategory } from '../store/actions/GlobalActions'
 
 import { Paper, Tabs, Tab } from '@material-ui/core'
 

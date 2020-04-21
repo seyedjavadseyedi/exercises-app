@@ -1,14 +1,14 @@
 import React, { useEffect, useContext } from 'react'
 
 // global context
-import { GlobalContext } from '../../store/GlobalContex'
+import { GlobalContext } from '../store/GlobalContex'
 
 // Actions
 import {
   getExercisesByMuscles,
   selectedExercise,
   deleteExercise
-} from '../../store/actions/GlobalActions'
+} from '../store/actions/GlobalActions'
 
 // material-ui components
 import {
@@ -24,7 +24,6 @@ import {
 import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 import { makeStyles } from '@material-ui/core/styles'
-
 
 // jss
 const useStyles = makeStyles((theme) => ({
@@ -49,10 +48,9 @@ const Exercises = () => {
 
   useEffect(() => {
     getExercisesByMuscles(dispatch)
-  }, [dispatch, exercises])
+  }, [dispatch])
 
-  
-  
+
 
   const classes = useStyles()
 
@@ -74,7 +72,7 @@ const Exercises = () => {
                     >
                       <ListItemText primary={exercise.title} />
                       <ListItemSecondaryAction>
-                      <IconButton>
+                        <IconButton>
                           <EditOutlinedIcon />
                         </IconButton>
                         <IconButton onClick={() => deleteExercise(exercise.id)}>

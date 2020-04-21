@@ -1,14 +1,15 @@
 import React from 'react'
 import { GlobalProvider } from './store/GlobalContex'
-import { Header, Footer } from './components/layout'
-import Exercises from './components/exercises'
+import Header from './components/Header'
+import ExercisesList from './components/ExercisesList'
+import Footer from './components/Footer'
 
 function App() {
   return (
     <>
       <GlobalProvider>
         <Header />
-        <Exercises />
+        <ExercisesList />
         <Footer />
       </GlobalProvider>
     </>

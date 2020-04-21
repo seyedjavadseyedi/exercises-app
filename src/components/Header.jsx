@@ -1,5 +1,5 @@
 import React from 'react'
-import  AddExercise  from "../addExercise";
+import  AddExercise  from "./AddExercise";
 
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
