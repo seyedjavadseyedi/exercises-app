@@ -8,12 +8,6 @@
   ],
   "exercises": [
     {
-      "id": "overhead-press",
-      "title": "Overhead press",
-      "description": "Detail exercise overhead press ...",
-      "muscles": "shoulders"
-    },
-    {
       "id": "dips",
       "title": "Dips",
       "description": "Detail exercise dips ...",

@@ -22,6 +22,7 @@ import {
   IconButton,
 } from '@material-ui/core'
 import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined'
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 import { makeStyles } from '@material-ui/core/styles'
 
 
@@ -73,6 +74,9 @@ const Exercises = () => {
                     >
                       <ListItemText primary={exercise.title} />
                       <ListItemSecondaryAction>
+                      <IconButton>
+                          <EditOutlinedIcon />
+                        </IconButton>
                         <IconButton onClick={() => deleteExercise(exercise.id)}>
                           <DeleteForeverOutlinedIcon />
                         </IconButton>
