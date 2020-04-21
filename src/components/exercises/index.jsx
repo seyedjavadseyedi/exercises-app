@@ -1,21 +1,31 @@
 import React, { useEffect, useContext } from 'react'
 
+// global context
 import { GlobalContext } from '../../store/GlobalContex'
+
+// Actions
 import {
   getExercisesByMuscles,
   selectedExercise,
+  deleteExercise
 } from '../../store/actions/GlobalActions'
 
+// material-ui components
 import {
   Paper,
   Grid,
   List,
   ListItem,
   ListItemText,
+  ListItemSecondaryAction,
   Typography,
+  IconButton,
 } from '@material-ui/core'
+import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined'
 import { makeStyles } from '@material-ui/core/styles'
 
+
+// jss
 const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
@@ -31,17 +41,19 @@ const Exercises = () => {
     state: {
       exercises,
       category,
-      exercise: { title, description },
+      exercise: { title, description }
     },
     dispatch,
   } = useContext(GlobalContext)
 
   useEffect(() => {
     getExercisesByMuscles(dispatch)
-  }, [dispatch])
+  }, [dispatch, exercises])
+
+  
+  
 
   const classes = useStyles()
-
 
   return (
     <Grid container spacing={2}>
@@ -60,6 +72,11 @@ const Exercises = () => {
                       onClick={() => selectedExercise(dispatch, exercise)}
                     >
                       <ListItemText primary={exercise.title} />
+                      <ListItemSecondaryAction>
+                        <IconButton onClick={() => deleteExercise(exercise.id)}>
+                          <DeleteForeverOutlinedIcon />
+                        </IconButton>
+                      </ListItemSecondaryAction>
                     </ListItem>
                   ))}
                 </List>

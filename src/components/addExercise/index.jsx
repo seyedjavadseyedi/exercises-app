@@ -59,6 +59,7 @@ const AddExercise = () => {
     getExercisesByMuscles(dispatch)
   }, [dispatch, newExercise])
 
+  
   return (
     <>
       <Fab
