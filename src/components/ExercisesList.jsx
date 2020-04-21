@@ -75,7 +75,7 @@ const Exercises = () => {
                         <IconButton>
                           <EditOutlinedIcon />
                         </IconButton>
-                        <IconButton onClick={() => deleteExercise(exercise.id)}>
+                        <IconButton onClick={() => deleteExercise(dispatch, exercise.id)}>
                           <DeleteForeverOutlinedIcon />
                         </IconButton>
                       </ListItemSecondaryAction>

@@ -33,7 +33,7 @@ export const GlobalReducer = (state, action) => {
     case GET_MUSCLES:
       return {
         ...state,
-        muscles: action.payload
+        muscles: action.payload,
       }
     case GET_EXERCISES_BY_MUSCLES:
       return {
@@ -73,7 +73,7 @@ export const GlobalReducer = (state, action) => {
         newExercise: action.payload,
         dialog: {
           open: false,
-        }
+        },
       }
     default:
       return state

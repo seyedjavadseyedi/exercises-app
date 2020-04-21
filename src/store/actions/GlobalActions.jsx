@@ -12,7 +12,7 @@ import {
 export const getMuscles = (dispatch) => {
   axios
     .get('http://localhost:8000/muscles')
-    .then((res) => {          
+    .then((res) => {
       dispatch({
         type: GET_MUSCLES,
         payload: res.data,
@@ -22,7 +22,6 @@ export const getMuscles = (dispatch) => {
 }
 
 export const getExercisesByMuscles = (dispatch) => {
-
   axios
     .get('http://localhost:8000/exercises')
     .then((res) => {
@@ -87,11 +86,13 @@ export const addNewExercise = (dispatch, newExercise) => {
     .catch((err) => console.log(err))
 }
 
-export const deleteExercise = (id) => {
+export const deleteExercise = (dispatch, id) => {
   axios
     .delete(`http://localhost:8000/exercises/${id}`)
     .then((res) => {
-      console.log(res)
+      console.log(res, `deleted ${id} item`)
     })
     .catch((err) => console.log(err))
+
+  getExercisesByMuscles(dispatch)
 }
