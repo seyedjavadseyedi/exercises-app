@@ -5,6 +5,7 @@ import {
   SELECTED_CATEGORY,
   SELECTED_EXERCISE,
   TOGGLE_DIALOG,
+  OPEN_NEW_EXERCISE_DIALOG,
   SET_FORM_ITEMS,
   ADD_NEW_EXERCISE,
 } from './types'
@@ -60,6 +61,12 @@ export const toggleDialog = (dispatch, open) => {
   dispatch({
     type: TOGGLE_DIALOG,
     payload: !open,
+  })
+}
+
+export const openNewExerciseDialog = (dispatch) => {
+  dispatch({
+    type: OPEN_NEW_EXERCISE_DIALOG
   })
 }
 

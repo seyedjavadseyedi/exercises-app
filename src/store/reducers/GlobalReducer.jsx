@@ -4,6 +4,7 @@ import {
   SELECTED_CATEGORY,
   SELECTED_EXERCISE,
   TOGGLE_DIALOG,
+  OPEN_NEW_EXERCISE_DIALOG,
   SET_FORM_ITEMS,
   ADD_NEW_EXERCISE,
 } from '../actions/types'
@@ -63,6 +64,14 @@ export const GlobalReducer = (state, action) => {
           muscles: '',
         },
       }
+    case OPEN_NEW_EXERCISE_DIALOG: {
+      return {
+        ...state,
+        exerciseDialog: {
+          open: true
+        }
+      }
+    }  
     case SET_FORM_ITEMS:
       return {
         ...state,
