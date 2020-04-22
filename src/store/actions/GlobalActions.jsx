@@ -6,6 +6,7 @@ import {
   SELECTED_EXERCISE,
   CLOSE_DIALOG,
   OPEN_NEW_EXERCISE_DIALOG,
+  OPEN_EDIT_EXERCISE_DIALOG,
   SET_FORM_ITEMS,
   ADD_NEW_EXERCISE,
 } from './types'
@@ -66,6 +67,12 @@ export const closeDialog = (dispatch) => {
 export const openNewExerciseDialog = (dispatch) => {
   dispatch({
     type: OPEN_NEW_EXERCISE_DIALOG
+  })
+}
+
+export const openEditExerciseDialog = (dispatch) => {
+  dispatch({
+    type: OPEN_EDIT_EXERCISE_DIALOG
   })
 }
 

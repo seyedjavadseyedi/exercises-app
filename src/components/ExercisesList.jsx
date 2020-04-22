@@ -7,7 +7,8 @@ import { GlobalContext } from '../store/GlobalContex'
 import {
   getExercisesByMuscles,
   selectedExercise,
-  deleteExercise
+  deleteExercise,
+  openEditExerciseDialog
 } from '../store/actions/GlobalActions'
 
 // material-ui components
@@ -72,7 +73,7 @@ const Exercises = () => {
                     >
                       <ListItemText primary={exercise.title} />
                       <ListItemSecondaryAction>
-                        <IconButton>
+                        <IconButton onClick={() => openEditExerciseDialog(dispatch)}>
                           <EditOutlinedIcon />
                         </IconButton>
                         <IconButton onClick={() => deleteExercise(dispatch, exercise.id)}>

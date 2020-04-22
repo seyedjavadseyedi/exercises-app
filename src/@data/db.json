@@ -42,6 +42,12 @@
       "title": "",
       "description": "",
       "muscles": ""
+    },
+    {
+      "id": "test-3",
+      "title": "test 3",
+      "description": "a;df",
+      "muscles": "shoulders"
     }
   ]
 }

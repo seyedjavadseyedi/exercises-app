@@ -5,6 +5,7 @@ import {
   SELECTED_EXERCISE,
   CLOSE_DIALOG,
   OPEN_NEW_EXERCISE_DIALOG,
+  OPEN_EDIT_EXERCISE_DIALOG,
   SET_FORM_ITEMS,
   ADD_NEW_EXERCISE,
 } from '../actions/types'
@@ -56,7 +57,7 @@ export const GlobalReducer = (state, action) => {
       return {
         ...state,
         exerciseDialog: {
-          open: false
+          open: false,
         },
         newExercise: {
           title: '',
@@ -68,10 +69,18 @@ export const GlobalReducer = (state, action) => {
       return {
         ...state,
         exerciseDialog: {
-          open: true
-        }
+          open: true,
+        },
       }
-    }  
+    }
+    case OPEN_EDIT_EXERCISE_DIALOG: {
+      return {
+        ...state,
+        exerciseDialog: {
+          open: true,
+        },
+      }
+    }
     case SET_FORM_ITEMS:
       return {
         ...state,
@@ -82,8 +91,8 @@ export const GlobalReducer = (state, action) => {
         ...state,
         newExercise: action.payload,
         exerciseDialog: {
-          open: false
-        }
+          open: false,
+        },
       }
     default:
       return state
