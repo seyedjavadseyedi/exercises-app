@@ -8,7 +8,7 @@ import {
   setFormItems,
   getExercisesByMuscles,
   addNewExercise,
-  toggleDialog
+  closeDialog
 } from '../store/actions/GlobalActions'
 
 // material-ui components
@@ -62,7 +62,7 @@ const ExerciseDialog = () => {
   }, [dispatch, newExercise])
 
   return (
-    <Dialog open={open} onClose={() => toggleDialog(dispatch, open)}>
+    <Dialog open={open} onClose={() => closeDialog(dispatch)}>
       <DialogTitle>Create a new exercise</DialogTitle>
 
       <DialogContent>

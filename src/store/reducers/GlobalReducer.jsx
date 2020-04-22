@@ -3,7 +3,7 @@ import {
   GET_EXERCISES_BY_MUSCLES,
   SELECTED_CATEGORY,
   SELECTED_EXERCISE,
-  TOGGLE_DIALOG,
+  CLOSE_DIALOG,
   OPEN_NEW_EXERCISE_DIALOG,
   SET_FORM_ITEMS,
   ADD_NEW_EXERCISE,
@@ -52,11 +52,11 @@ export const GlobalReducer = (state, action) => {
         ...state,
         exercise: action.payload,
       }
-    case TOGGLE_DIALOG:
+    case CLOSE_DIALOG:
       return {
         ...state,
         exerciseDialog: {
-          open: action.payload,
+          open: false
         },
         newExercise: {
           title: '',

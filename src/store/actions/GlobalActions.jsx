@@ -4,7 +4,7 @@ import {
   GET_EXERCISES_BY_MUSCLES,
   SELECTED_CATEGORY,
   SELECTED_EXERCISE,
-  TOGGLE_DIALOG,
+  CLOSE_DIALOG,
   OPEN_NEW_EXERCISE_DIALOG,
   SET_FORM_ITEMS,
   ADD_NEW_EXERCISE,
@@ -57,10 +57,9 @@ export const selectedExercise = (dispatch, exercise) => {
   })
 }
 
-export const toggleDialog = (dispatch, open) => {
+export const closeDialog = (dispatch) => {
   dispatch({
-    type: TOGGLE_DIALOG,
-    payload: !open,
+    type: CLOSE_DIALOG,
   })
 }
 
