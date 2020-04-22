@@ -40,7 +40,7 @@ const ExerciseDialog = () => {
   // get state & dispatch
   const {
     state: {
-      dialog: {open},  
+      exerciseDialog: {open},  
       // change muscles name to the category to prevent conflict
       muscles: categories,
       newExercise,

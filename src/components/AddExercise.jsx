@@ -17,7 +17,7 @@ const AddExercise = () => {
   // get state & dispatch
   const {
     state: {
-      dialog: { open },
+      exerciseDialog: { open },
     },
     dispatch,
   } = useContext(GlobalContext)

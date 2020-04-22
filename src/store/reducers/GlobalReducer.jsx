@@ -18,8 +18,9 @@ export const initialState = {
     title: 'Welcome',
     description: 'Please select an exercise from the list on the left',
   },
-  dialog: {
+  exerciseDialog: {
     open: false,
+    dialogType: 'new',
   },
   newExercise: {
     title: '',
@@ -53,7 +54,7 @@ export const GlobalReducer = (state, action) => {
     case TOGGLE_DIALOG:
       return {
         ...state,
-        dialog: {
+        exerciseDialog: {
           open: action.payload,
         },
         newExercise: {
@@ -71,9 +72,9 @@ export const GlobalReducer = (state, action) => {
       return {
         ...state,
         newExercise: action.payload,
-        dialog: {
-          open: false,
-        },
+        exerciseDialog: {
+          open: false
+        }
       }
     default:
       return state
