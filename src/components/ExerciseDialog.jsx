@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 const ExerciseDialog = () => {
   const classes = useStyles()
 
-  // get state $ dispatch
+  // get state & dispatch
   const {
     state: {
       dialog: {open},  

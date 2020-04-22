@@ -20,28 +20,10 @@
       "muscles": "arms"
     },
     {
-      "id": "barbell-curls",
-      "title": "Barbell Curls",
-      "description": "Detail exercise barbell curls...",
-      "muscles": "arms"
-    },
-    {
       "id": "bench-press",
       "title": "Bench Press",
       "description": "Detail exercise bench press...",
       "muscles": "chest"
-    },
-    {
-      "id": "pull-ups",
-      "title": "Pull Ups",
-      "description": "Detail exercise pull ups...",
-      "muscles": "back"
-    },
-    {
-      "id": "deadlifts",
-      "title": "Deadlifts",
-      "description": "Detail exercise deadlifts...",
-      "muscles": "back"
     },
     {
       "id": "squats",
