@@ -1,8 +1,5 @@
 import React, { useContext } from 'react'
 
-// local component
-import ExerciseDialog from './ExerciseDialog'
-
 // global context
 import { GlobalContext } from '../store/GlobalContex'
 
@@ -34,8 +31,6 @@ const AddExercise = () => {
       >
         <AddIcon />
       </Fab>
-
-      <ExerciseDialog />
     </>
   )
 }
