@@ -1,4 +1,5 @@
 import React from 'react'
+import CssBaseline from '@material-ui/core/CssBaseline'
 import { GlobalProvider } from './store/GlobalContex'
 import Header from './components/Header'
 import ExercisesList from './components/ExercisesList'
@@ -9,6 +10,7 @@ function App() {
   return (
     <>
       <GlobalProvider>
+        <CssBaseline />
         <Header />
         <ExercisesList />
         <ExerciseDialog />

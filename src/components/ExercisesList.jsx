@@ -8,7 +8,7 @@ import {
   getExercisesByMuscles,
   selectedExercise,
   deleteExercise,
-  openEditExerciseDialog
+  openEditExerciseDialog,
 } from '../store/actions/GlobalActions'
 
 // material-ui components
@@ -30,8 +30,7 @@ import { makeStyles } from '@material-ui/core/styles'
 const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
-    marginTop: 10,
-    marginBottom: 10,
+    margin: theme.spacing(1),
     height: 400,
     overflowY: 'auto',
   },
@@ -42,7 +41,7 @@ const Exercises = () => {
     state: {
       exercises,
       category,
-      exercise: { title, description }
+      exercise: { title, description },
     },
     dispatch,
   } = useContext(GlobalContext)
@@ -51,13 +50,11 @@ const Exercises = () => {
     getExercisesByMuscles(dispatch)
   }, [dispatch])
 
-
-
   const classes = useStyles()
 
   return (
-    <Grid container spacing={2}>
-      <Grid item sm>
+    <Grid container >
+      <Grid item xs={12} sm={6}>
         <Paper className={classes.paper}>
           {exercises.map(([group, exercises]) =>
             !category || category === group ? (
@@ -73,10 +70,16 @@ const Exercises = () => {
                     >
                       <ListItemText primary={exercise.title} />
                       <ListItemSecondaryAction>
-                        <IconButton onClick={() => openEditExerciseDialog(dispatch, exercise)}>
+                        <IconButton
+                          onClick={() =>
+                            openEditExerciseDialog(dispatch, exercise)
+                          }
+                        >
                           <EditOutlinedIcon />
                         </IconButton>
-                        <IconButton onClick={() => deleteExercise(dispatch, exercise.id)}>
+                        <IconButton
+                          onClick={() => deleteExercise(dispatch, exercise.id)}
+                        >
                           <DeleteForeverOutlinedIcon />
                         </IconButton>
                       </ListItemSecondaryAction>
@@ -88,7 +91,7 @@ const Exercises = () => {
           )}
         </Paper>
       </Grid>
-      <Grid item sm>
+      <Grid item xs={12} sm={6}>
         <Paper className={classes.paper}>
           <Typography variant='h4'>{title}</Typography>
           <Typography variant='body1'>{description}</Typography>
