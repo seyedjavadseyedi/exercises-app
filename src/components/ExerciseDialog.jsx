@@ -8,22 +8,25 @@ import {
   setFormItems,
   getExercisesByMuscles,
   addNewExercise,
-  closeDialog
+  closeDialog,
+  editExercise,
 } from '../store/actions/GlobalActions'
 
 // material-ui components
 import {
-    Dialog,
-    DialogTitle,
-    DialogActions,
-    DialogContent,
-    DialogContentText,
-    Button,
-    TextField,
-    FormControl,
-    InputLabel,
-    Select,
-    MenuItem,
+  Dialog,
+  DialogTitle,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  AppBar,
+  Toolbar,
+  Button,
+  TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -40,33 +43,49 @@ const ExerciseDialog = () => {
   // get state & dispatch
   const {
     state: {
-      exerciseDialog: {open},  
+      exerciseDialog: { open, data, dialogType },
       // change muscles name to the category to prevent conflict
       muscles: categories,
-      newExercise,
     },
     dispatch,
   } = useContext(GlobalContext)
 
   const handleFormItems = (name) => ({ target: { value } }) => {
     const newItem = {
-      ...newExercise,
+      ...data,
       [name]: value,
     }
-
-    setFormItems(dispatch, newItem)
+    setFormItems(dispatch, newItem, dialogType)
   }
 
   useEffect(() => {
     getExercisesByMuscles(dispatch)
-  }, [dispatch, newExercise])
+  }, [dispatch, data])
+
+  console.log(data);
+  
 
   return (
     <Dialog open={open} onClose={() => closeDialog(dispatch)}>
-      <DialogTitle>Create a new exercise</DialogTitle>
+      <AppBar
+        position='static'
+        color={dialogType === 'new' ? 'primary' : 'secondary'}
+      >
+        <Toolbar variant='dense'>
+          {dialogType === 'new' ? (
+            <DialogTitle>Create a new exercise</DialogTitle>
+          ) : (
+            <DialogTitle>Edit Exercise</DialogTitle>
+          )}
+        </Toolbar>
+      </AppBar>
 
       <DialogContent>
-        <DialogContentText>Please fill out the form below</DialogContentText>
+        {dialogType === 'new' ? (
+          <DialogContentText>Please fill out the form below</DialogContentText>
+        ) : (
+          <DialogContentText>You can edit exercise</DialogContentText>
+        )}
         <form>
           <TextField
             variant='outlined'
@@ -74,7 +93,7 @@ const ExerciseDialog = () => {
             label='Title'
             autoFocus
             required
-            value={newExercise.title}
+            value={data.title}
             onChange={handleFormItems('title')}
             className={classes.formItem}
             margin='normal'
@@ -90,7 +109,7 @@ const ExerciseDialog = () => {
             <InputLabel>Muscles</InputLabel>
             <Select
               label='Muscles'
-              value={newExercise.muscles}
+              value={data.muscles}
               onChange={handleFormItems('muscles')}
             >
               {categories.map((category) => (
@@ -107,7 +126,7 @@ const ExerciseDialog = () => {
             label='Description'
             multiline
             rows='4'
-            value={newExercise.description}
+            value={data.description}
             onChange={handleFormItems('description')}
             className={classes.formItem}
             margin='normal'
@@ -115,13 +134,23 @@ const ExerciseDialog = () => {
         </form>
       </DialogContent>
       <DialogActions>
-        <Button
-          color='primary'
-          variant='contained'
-          onClick={() => addNewExercise(dispatch, newExercise)}
-        >
-          Add Exercise
-        </Button>
+        {dialogType === 'new' ? (
+          <Button
+            color='primary'
+            variant='contained'
+            onClick={() => addNewExercise(dispatch, data)}
+          >
+            Add Exercise
+          </Button>
+        ) : (
+          <Button
+            color='secondary'
+            variant='contained'
+            onClick={() => editExercise(dispatch, data)}
+          >
+            Edit Exercise
+          </Button>
+        )}
       </DialogActions>
     </Dialog>
   )

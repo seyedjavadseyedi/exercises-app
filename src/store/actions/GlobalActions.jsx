@@ -9,6 +9,7 @@ import {
   OPEN_EDIT_EXERCISE_DIALOG,
   SET_FORM_ITEMS,
   ADD_NEW_EXERCISE,
+  EDIT_EXERCISE
 } from './types'
 
 export const getMuscles = (dispatch) => {
@@ -70,23 +71,25 @@ export const openNewExerciseDialog = (dispatch) => {
   })
 }
 
-export const openEditExerciseDialog = (dispatch) => {
+export const openEditExerciseDialog = (dispatch, exercise) => {
   dispatch({
-    type: OPEN_EDIT_EXERCISE_DIALOG
+    type: OPEN_EDIT_EXERCISE_DIALOG,
+    exercise
   })
 }
 
-export const setFormItems = (dispatch, newItem) => {
+export const setFormItems = (dispatch, newItem, dialogType) => {
   dispatch({
     type: SET_FORM_ITEMS,
     payload: newItem,
+    dialogType
   })
 }
 
-export const addNewExercise = (dispatch, newExercise) => {
+export const addNewExercise = (dispatch, data) => {
   const addNewItem = {
-    id: newExercise.title.toLocaleLowerCase().replace(/ /g, '-'),
-    ...newExercise,
+    id: data.title.toLocaleLowerCase().replace(/ /g, '-'),
+    ...data,
   }
   axios
     .post('http://localhost:8000/exercises', addNewItem)
@@ -98,6 +101,22 @@ export const addNewExercise = (dispatch, newExercise) => {
     })
     .catch((err) => console.log(err))
 }
+
+export const editExercise = (dispatch, data) => {
+  const editedData = {
+    id: data.title.toLocaleLowerCase().replace(/ /g, '-'),
+    ...data,
+  }
+  axios.patch(`http://localhost:8000/exercises/${data.id}`, editedData)
+    .then(() => 
+      dispatch({
+        type: EDIT_EXERCISE,
+        payload: editedData
+      })
+    )
+    .catch(err => console.log(err))
+}
+
 
 export const deleteExercise = (dispatch, id) => {
   axios

@@ -8,6 +8,7 @@ import {
   OPEN_EDIT_EXERCISE_DIALOG,
   SET_FORM_ITEMS,
   ADD_NEW_EXERCISE,
+  EDIT_EXERCISE
 } from '../actions/types'
 
 //initial state
@@ -23,11 +24,11 @@ export const initialState = {
   exerciseDialog: {
     open: false,
     dialogType: 'new',
-  },
-  newExercise: {
-    title: '',
-    description: '',
-    muscles: '',
+    data: {
+      title: '',
+      description: '',
+      muscles: '',
+    }
   },
 }
 
@@ -58,11 +59,11 @@ export const GlobalReducer = (state, action) => {
         ...state,
         exerciseDialog: {
           open: false,
-        },
-        newExercise: {
-          title: '',
-          description: '',
-          muscles: '',
+          data: {
+            title: '',
+            description: '',
+            muscles: '',
+          }
         },
       }
     case OPEN_NEW_EXERCISE_DIALOG: {
@@ -70,6 +71,12 @@ export const GlobalReducer = (state, action) => {
         ...state,
         exerciseDialog: {
           open: true,
+          dialogType: 'new',
+          data: {
+            title: '',
+            description: '',
+            muscles: '',
+          }
         },
       }
     }
@@ -78,22 +85,40 @@ export const GlobalReducer = (state, action) => {
         ...state,
         exerciseDialog: {
           open: true,
+          dialogType: 'edit',
+          data: action.exercise
         },
       }
     }
     case SET_FORM_ITEMS:
       return {
         ...state,
-        newExercise: action.payload,
-      }
+        exerciseDialog: {
+          open: true,
+          dialogType: action.dialogType,
+          data: action.payload,
+        },
+      }  
     case ADD_NEW_EXERCISE:
       return {
         ...state,
-        newExercise: action.payload,
         exerciseDialog: {
           open: false,
+          data: action.payload
         },
       }
+    case EDIT_EXERCISE: 
+      return {
+        ...state,
+        exerciseDialog: {
+          open: false,
+          data: {
+            title: '',
+            description: '',
+            muscles: ''
+          }
+        }
+      }  
     default:
       return state
   }

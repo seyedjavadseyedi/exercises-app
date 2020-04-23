@@ -8,45 +8,27 @@
   ],
   "exercises": [
     {
-      "id": "overhead-press",
-      "title": "Overhead press",
-      "description": "Detail exercise overhead press ...",
+      "id": "test-1",
+      "title": "test 32",
+      "description": "aa",
       "muscles": "shoulders"
     },
     {
-      "id": "dips",
-      "title": "Dips",
-      "description": "Detail exercise dips ...",
-      "muscles": "arms"
-    },
-    {
-      "id": "bench-press",
-      "title": "Bench Press",
-      "description": "Detail exercise bench press...",
-      "muscles": "chest"
-    },
-    {
-      "id": "squats",
-      "title": "Squats",
-      "description": "Detail exercise squats...",
-      "muscles": "legs"
-    },
-    {
-      "id": "test-2",
-      "title": "test 2",
-      "description": "adsfl",
+      "id": "test-5",
+      "title": "test 522",
+      "description": "as",
       "muscles": "shoulders"
     },
     {
-      "id": "TAubteX",
-      "title": "",
-      "description": "",
-      "muscles": ""
+      "id": "test-6",
+      "title": "test 5421",
+      "description": "alkk\n",
+      "muscles": "shoulders"
     },
     {
-      "id": "test-3",
-      "title": "test 3",
-      "description": "a;df",
+      "id": "test",
+      "title": "test",
+      "description": "jf",
       "muscles": "shoulders"
     }
   ]

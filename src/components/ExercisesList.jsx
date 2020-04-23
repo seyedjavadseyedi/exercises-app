@@ -73,7 +73,7 @@ const Exercises = () => {
                     >
                       <ListItemText primary={exercise.title} />
                       <ListItemSecondaryAction>
-                        <IconButton onClick={() => openEditExerciseDialog(dispatch)}>
+                        <IconButton onClick={() => openEditExerciseDialog(dispatch, exercise)}>
                           <EditOutlinedIcon />
                         </IconButton>
                         <IconButton onClick={() => deleteExercise(dispatch, exercise.id)}>
