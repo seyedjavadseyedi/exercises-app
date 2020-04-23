@@ -62,7 +62,6 @@ const ExerciseDialog = () => {
     getExercisesByMuscles(dispatch)
   }, [dispatch, data])
 
-  console.log(data);
   
 
   return (

@@ -9,7 +9,7 @@ import {
   OPEN_EDIT_EXERCISE_DIALOG,
   SET_FORM_ITEMS,
   ADD_NEW_EXERCISE,
-  EDIT_EXERCISE
+  EDIT_EXERCISE,
 } from './types'
 
 export const getMuscles = (dispatch) => {
@@ -67,14 +67,14 @@ export const closeDialog = (dispatch) => {
 
 export const openNewExerciseDialog = (dispatch) => {
   dispatch({
-    type: OPEN_NEW_EXERCISE_DIALOG
+    type: OPEN_NEW_EXERCISE_DIALOG,
   })
 }
 
 export const openEditExerciseDialog = (dispatch, exercise) => {
   dispatch({
     type: OPEN_EDIT_EXERCISE_DIALOG,
-    exercise
+    exercise,
   })
 }
 
@@ -82,7 +82,7 @@ export const setFormItems = (dispatch, newItem, dialogType) => {
   dispatch({
     type: SET_FORM_ITEMS,
     payload: newItem,
-    dialogType
+    dialogType,
   })
 }
 
@@ -104,19 +104,19 @@ export const addNewExercise = (dispatch, data) => {
 
 export const editExercise = (dispatch, data) => {
   const editedData = {
-    id: data.title.toLocaleLowerCase().replace(/ /g, '-'),
     ...data,
+    id: data.title.toLocaleLowerCase().replace(/ /g, '-'),
   }
-  axios.patch(`http://localhost:8000/exercises/${data.id}`, editedData)
-    .then(() => 
+  axios
+    .patch(`http://localhost:8000/exercises/${data.id}`, editedData)
+    .then(() =>
       dispatch({
         type: EDIT_EXERCISE,
-        payload: editedData
+        payload: editedData,
       })
     )
-    .catch(err => console.log(err))
+    .catch((err) => console.log(err))
 }
-
 
 export const deleteExercise = (dispatch, id) => {
   axios
