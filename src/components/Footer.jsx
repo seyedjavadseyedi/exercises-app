@@ -2,16 +2,10 @@ import React, { useEffect, useContext } from 'react'
 import { GlobalContext } from '../store/GlobalContex'
 import { getMuscles, selectedCategory } from '../store/actions/GlobalActions'
 
-import { Paper, Tabs, Tab } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import { Tabs, Tab, AppBar } from '@material-ui/core'
 import { useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
-const useStyles = makeStyles((theme) => ({
-  footerTabs: {
-    margin: theme.spacing(1),
-  },
-}))
 const Footer = () => {
   const {
     state: { category, muscles },
@@ -30,26 +24,26 @@ const Footer = () => {
     getMuscles(dispatch)
   }, [dispatch])
 
-  const classes = useStyles()
+  
   const theme = useTheme()
   const matches = useMediaQuery(theme.breakpoints.up('md'))
 
   return (
-    <Paper className={classes.footerTabs}>
+    <AppBar position='static'>
       <Tabs
-        indicatorColor='primary'
         value={index}
         onChange={onSelected}
         variant={!matches ? 'scrollable' : 'standard'}
         centered={matches ? true : false}
-        textColor='primary'
+        indicatorColor='secondary'
+        textColor='secondary'
       >
         <Tab label='All'></Tab>
         {muscles.map((item, index) => (
           <Tab key={index} label={item}></Tab>
         ))}
       </Tabs>
-    </Paper>
+    </AppBar>
   )
 }
 

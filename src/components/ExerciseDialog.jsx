@@ -28,17 +28,8 @@ import {
   Select,
   MenuItem,
 } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-
-// jss style
-const useStyles = makeStyles((theme) => ({
-  formItem: {
-    width: 500,
-  },
-}))
 
 const ExerciseDialog = () => {
-  const classes = useStyles()
 
   // get state & dispatch
   const {
@@ -65,7 +56,7 @@ const ExerciseDialog = () => {
   
 
   return (
-    <Dialog open={open} onClose={() => closeDialog(dispatch)}>
+    <Dialog open={open} onClose={() => closeDialog(dispatch)} fullWidth maxWidth='xs'>
       <AppBar
         position='static'
         color={dialogType === 'new' ? 'primary' : 'secondary'}
@@ -94,13 +85,13 @@ const ExerciseDialog = () => {
             required
             value={data.title}
             onChange={handleFormItems('title')}
-            className={classes.formItem}
+            fullWidth
             margin='normal'
           />
           <br />
           <FormControl
             variant='outlined'
-            className={classes.formItem}
+            fullWidth
             margin='normal'
             size='small'
             required
@@ -127,7 +118,7 @@ const ExerciseDialog = () => {
             rows='4'
             value={data.description}
             onChange={handleFormItems('description')}
-            className={classes.formItem}
+            fullWidth
             margin='normal'
           />
         </form>
@@ -138,6 +129,7 @@ const ExerciseDialog = () => {
             color='primary'
             variant='contained'
             onClick={() => addNewExercise(dispatch, data)}
+            disabled={!data.title || !data.muscles}
           >
             Add Exercise
           </Button>
@@ -146,6 +138,7 @@ const ExerciseDialog = () => {
             color='secondary'
             variant='contained'
             onClick={() => editExercise(dispatch, data)}
+            disabled={!data.title || !data.muscles}
           >
             Edit Exercise
           </Button>

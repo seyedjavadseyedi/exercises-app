@@ -6,15 +6,20 @@ import ExercisesList from './components/ExercisesList'
 import ExerciseDialog from './components/ExerciseDialog'
 import Footer from './components/Footer'
 
+import { ThemeProvider } from '@material-ui/core/styles'
+import { theme } from './themeConfig'
+
 function App() {
   return (
     <>
       <GlobalProvider>
-        <CssBaseline />
-        <Header />
-        <ExercisesList />
-        <ExerciseDialog />
-        <Footer />
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Header />
+          <ExercisesList />
+          <ExerciseDialog />
+          <Footer />
+        </ThemeProvider>
       </GlobalProvider>
     </>
   )

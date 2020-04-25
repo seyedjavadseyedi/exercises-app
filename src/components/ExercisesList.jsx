@@ -28,12 +28,35 @@ import { makeStyles } from '@material-ui/core/styles'
 
 // jss
 const useStyles = makeStyles((theme) => ({
-  paper: {
-    padding: theme.spacing(2),
-    margin: theme.spacing(1),
-    height: 400,
-    overflowY: 'auto',
+  items: {
+    [theme.breakpoints.down('sm')]: {
+      height: 'calc(100% - 56px - 48px)'
+    },
+    [theme.breakpoints.up('sm')]: {
+      height: 'calc(100% - 68px - 48px)'
+    }
   },
+  item: {
+    [theme.breakpoints.down('sm')]: {
+      height: 'calc(50% - 8px)',
+    },
+    [theme.breakpoints.up('sm')]: {
+      height: 'calc(100% - 8px)',
+    },
+    padding: theme.spacing(1),
+  },
+  paper: {
+    overflowY: 'auto',
+    height: '100%',
+    padding: theme.spacing(2),
+  },
+  // global styles
+  '@global': {
+    'html, body, #root': {
+      height: '100%'
+    }
+  },
+  
 }))
 
 const Exercises = () => {
@@ -53,13 +76,13 @@ const Exercises = () => {
   const classes = useStyles()
 
   return (
-    <Grid container >
-      <Grid item xs={12} sm={6}>
+    <Grid container className={classes.items}>
+      <Grid item className={classes.item} xs={12} sm={6}>
         <Paper className={classes.paper}>
           {exercises.map(([group, exercises]) =>
             !category || category === group ? (
               <React.Fragment key={group}>
-                <Typography variant='h5'>{group}</Typography>
+                <Typography color='secondary' variant='h5'>{group}</Typography>
                 <List component='ul'>
                   {exercises.map((exercise) => (
                     <ListItem
@@ -74,13 +97,15 @@ const Exercises = () => {
                           onClick={() =>
                             openEditExerciseDialog(dispatch, exercise)
                           }
+                          color='secondary'
                         >
-                          <EditOutlinedIcon />
+                          <EditOutlinedIcon  fontSize='small'/>
                         </IconButton>
                         <IconButton
                           onClick={() => deleteExercise(dispatch, exercise.id)}
+                          color='secondary'
                         >
-                          <DeleteForeverOutlinedIcon />
+                          <DeleteForeverOutlinedIcon fontSize='small'/>
                         </IconButton>
                       </ListItemSecondaryAction>
                     </ListItem>
@@ -91,10 +116,16 @@ const Exercises = () => {
           )}
         </Paper>
       </Grid>
-      <Grid item xs={12} sm={6}>
+      <Grid item className={classes.item} xs={12} sm={6}>
         <Paper className={classes.paper}>
-          <Typography variant='h4'>{title}</Typography>
-          <Typography variant='body1'>{description}</Typography>
+          <Typography variant='h4' color='secondary' gutterBottom>
+            {title}
+          </Typography>
+          <Typography variant='body1'>
+            {!description
+              ? 'This exercise have not description, you can add with edite icon'
+              : description}
+          </Typography>
         </Paper>
       </Grid>
     </Grid>

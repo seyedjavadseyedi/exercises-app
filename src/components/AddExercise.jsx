@@ -10,8 +10,6 @@ import { openNewExerciseDialog } from '../store/actions/GlobalActions'
 import { Fab } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
 
-
-
 const AddExercise = () => {
 
   // get state & dispatch
@@ -23,7 +21,7 @@ const AddExercise = () => {
     <>
       <Fab
         color='secondary'
-        size='medium'
+        size='small'
         onClick={() => openNewExerciseDialog(dispatch)}
       >
         <AddIcon />
