@@ -26,6 +26,12 @@
       "muscles": "arms"
     },
     {
+      "id": "bench-press",
+      "title": "Bench Press",
+      "description": "Detail exercise bench press...",
+      "muscles": "chest"
+    },
+    {
       "id": "pull-ups",
       "title": "Pull Ups",
       "description": "Detail exercise pull ups...",
