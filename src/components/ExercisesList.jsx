@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
       height: 'calc(100% - 56px - 48px)'
     },
     [theme.breakpoints.up('sm')]: {
-      height: 'calc(100% - 68px - 48px)'
+      height: 'calc(100% - 64px - 48px)'
     }
   },
   item: {
