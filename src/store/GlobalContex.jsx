@@ -12,9 +12,7 @@ const GlobalProvider = ({ children }) => {
   return (
     <DispatchContext.Provider value={{ dispatch }}>
       <StoreContext.Provider value={{ state }}>
-
-          {children}
-
+        {children}
       </StoreContext.Provider>
     </DispatchContext.Provider>
   )
