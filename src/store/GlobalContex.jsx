@@ -6,20 +6,25 @@ const GlobalContext = createContext()
 
 // create store context
 const StoreContext = createContext()
+// create dispatch context
+const DispatchContext = createContext()
 
 // Provider Component
 const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(GlobalReducer, initialState)
   return (
-    <StoreContext.Provider value={{state}}>
-      <GlobalContext.Provider value={{ state, dispatch }}>
-        {children}
-      </GlobalContext.Provider>
-    </StoreContext.Provider>
+    <DispatchContext.Provider value={{ dispatch }}>
+      <StoreContext.Provider value={{ state }}>
+        <GlobalContext.Provider value={{ state, dispatch }}>
+          {children}
+        </GlobalContext.Provider>
+      </StoreContext.Provider>
+    </DispatchContext.Provider>
   )
 }
 
 // custom hooks
-export const useStore = () => useContext(StoreContext)
+const useStore = () => useContext(StoreContext)
+const useDispatch = () => useContext(DispatchContext)
 
-export { GlobalContext, GlobalProvider }
+export { useStore, useDispatch, GlobalContext, GlobalProvider }
