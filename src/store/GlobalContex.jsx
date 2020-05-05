@@ -1,9 +1,6 @@
 import React, { createContext, useReducer, useContext } from 'react'
 import { GlobalReducer, initialState } from './reducers/GlobalReducer'
 
-// create global context
-const GlobalContext = createContext()
-
 // create store context
 const StoreContext = createContext()
 // create dispatch context
@@ -15,9 +12,9 @@ const GlobalProvider = ({ children }) => {
   return (
     <DispatchContext.Provider value={{ dispatch }}>
       <StoreContext.Provider value={{ state }}>
-        <GlobalContext.Provider value={{ state, dispatch }}>
+
           {children}
-        </GlobalContext.Provider>
+
       </StoreContext.Provider>
     </DispatchContext.Provider>
   )
@@ -27,4 +24,4 @@ const GlobalProvider = ({ children }) => {
 const useStore = () => useContext(StoreContext)
 const useDispatch = () => useContext(DispatchContext)
 
-export { useStore, useDispatch, GlobalContext, GlobalProvider }
+export { useStore, useDispatch, GlobalProvider }
