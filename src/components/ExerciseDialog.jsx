@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react'
 
 // global context
 import { GlobalContext } from '../store/GlobalContex'
+import { useStore } from '../store/GlobalContex'
 
 // actions
 import {
@@ -30,16 +31,15 @@ import {
 } from '@material-ui/core'
 
 const ExerciseDialog = () => {
-
-  // get state & dispatch
   const {
     state: {
       exerciseDialog: { open, data, dialogType },
       // change muscles name to the category to prevent conflict
       muscles: categories,
     },
-    dispatch,
-  } = useContext(GlobalContext)
+  } = useStore()
+  // get state & dispatch
+  const { dispatch } = useContext(GlobalContext)
 
   const handleFormItems = (name) => ({ target: { value } }) => {
     const newItem = {
@@ -53,10 +53,13 @@ const ExerciseDialog = () => {
     getExercisesByMuscles(dispatch)
   }, [dispatch, data])
 
-  
-
   return (
-    <Dialog open={open} onClose={() => closeDialog(dispatch)} fullWidth maxWidth='xs'>
+    <Dialog
+      open={open}
+      onClose={() => closeDialog(dispatch)}
+      fullWidth
+      maxWidth='xs'
+    >
       <AppBar
         position='static'
         color={dialogType === 'new' ? 'primary' : 'secondary'}

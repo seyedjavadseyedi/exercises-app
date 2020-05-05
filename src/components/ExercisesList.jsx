@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react'
 
 // global context
 import { GlobalContext } from '../store/GlobalContex'
+import { useStore } from '../store/GlobalContex'
 
 // Actions
 import {
@@ -30,11 +31,11 @@ import { makeStyles } from '@material-ui/core/styles'
 const useStyles = makeStyles((theme) => ({
   items: {
     [theme.breakpoints.down('sm')]: {
-      height: 'calc(100% - 56px - 48px)'
+      height: 'calc(100% - 56px - 48px)',
     },
     [theme.breakpoints.up('sm')]: {
-      height: 'calc(100% - 64px - 48px)'
-    }
+      height: 'calc(100% - 64px - 48px)',
+    },
   },
   item: {
     [theme.breakpoints.down('sm')]: {
@@ -53,10 +54,9 @@ const useStyles = makeStyles((theme) => ({
   // global styles
   '@global': {
     'html, body, #root': {
-      height: '100%'
-    }
+      height: '100%',
+    },
   },
-  
 }))
 
 const Exercises = () => {
@@ -66,8 +66,8 @@ const Exercises = () => {
       category,
       exercise: { title, description },
     },
-    dispatch,
-  } = useContext(GlobalContext)
+  } = useStore()
+  const { dispatch } = useContext(GlobalContext)
 
   useEffect(() => {
     getExercisesByMuscles(dispatch)
@@ -82,7 +82,9 @@ const Exercises = () => {
           {exercises.map(([group, exercises]) =>
             !category || category === group ? (
               <React.Fragment key={group}>
-                <Typography color='secondary' variant='h5'>{group}</Typography>
+                <Typography color='secondary' variant='h5'>
+                  {group}
+                </Typography>
                 <List component='ul'>
                   {exercises.map((exercise) => (
                     <ListItem
@@ -99,13 +101,13 @@ const Exercises = () => {
                           }
                           color='secondary'
                         >
-                          <EditOutlinedIcon  fontSize='small'/>
+                          <EditOutlinedIcon fontSize='small' />
                         </IconButton>
                         <IconButton
                           onClick={() => deleteExercise(dispatch, exercise.id)}
                           color='secondary'
                         >
-                          <DeleteForeverOutlinedIcon fontSize='small'/>
+                          <DeleteForeverOutlinedIcon fontSize='small' />
                         </IconButton>
                       </ListItemSecondaryAction>
                     </ListItem>

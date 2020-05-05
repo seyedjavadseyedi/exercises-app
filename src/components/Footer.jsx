@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import { GlobalContext } from '../store/GlobalContex'
+import { useStore } from "../store/GlobalContex"
 import { getMuscles, selectedCategory } from '../store/actions/GlobalActions'
 
 import { Tabs, Tab, AppBar } from '@material-ui/core'
@@ -7,8 +8,8 @@ import { useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 const Footer = () => {
+  const {state: { category, muscles }} = useStore()
   const {
-    state: { category, muscles },
     dispatch,
   } = useContext(GlobalContext)
 
