@@ -1,8 +1,7 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect } from 'react'
 
-// global context
-import { GlobalContext } from '../store/GlobalContex'
-import { useStore } from '../store/GlobalContex'
+// state & dispatch
+import { useStore, useDispatch } from '../store/GlobalContex'
 
 // actions
 import {
@@ -31,6 +30,7 @@ import {
 } from '@material-ui/core'
 
 const ExerciseDialog = () => {
+  // get state
   const {
     state: {
       exerciseDialog: { open, data, dialogType },
@@ -38,8 +38,8 @@ const ExerciseDialog = () => {
       muscles: categories,
     },
   } = useStore()
-  // get state & dispatch
-  const { dispatch } = useContext(GlobalContext)
+  // get dispatch
+  const { dispatch } = useDispatch()
 
   const handleFormItems = (name) => ({ target: { value } }) => {
     const newItem = {

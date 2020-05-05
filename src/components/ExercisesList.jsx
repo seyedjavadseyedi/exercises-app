@@ -1,10 +1,9 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect } from 'react'
 
-// global context
-import { GlobalContext } from '../store/GlobalContex'
-import { useStore } from '../store/GlobalContex'
+// state & dispatch
+import { useStore, useDispatch } from '../store/GlobalContex'
 
-// Actions
+// actions
 import {
   getExercisesByMuscles,
   selectedExercise,
@@ -60,6 +59,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const Exercises = () => {
+  // get state
   const {
     state: {
       exercises,
@@ -67,7 +67,8 @@ const Exercises = () => {
       exercise: { title, description },
     },
   } = useStore()
-  const { dispatch } = useContext(GlobalContext)
+  // get dispatch
+  const { dispatch } = useDispatch()
 
   useEffect(() => {
     getExercisesByMuscles(dispatch)

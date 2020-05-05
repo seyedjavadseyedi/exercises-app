@@ -1,17 +1,22 @@
-import React, { useEffect, useContext } from 'react'
-import { GlobalContext } from '../store/GlobalContex'
-import { useStore } from "../store/GlobalContex"
+import React, { useEffect } from 'react'
+
+// state & dispatch
+import { useStore, useDispatch } from '../store/GlobalContex'
+// actions
 import { getMuscles, selectedCategory } from '../store/actions/GlobalActions'
 
+// material-ui components
 import { Tabs, Tab, AppBar } from '@material-ui/core'
 import { useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 const Footer = () => {
-  const {state: { category, muscles }} = useStore()
+  // get state
   const {
-    dispatch,
-  } = useContext(GlobalContext)
+    state: { category, muscles },
+  } = useStore()
+  // get dispatch
+  const { dispatch } = useDispatch()
 
   const index = category
     ? muscles.findIndex((group) => group === category) + 1
@@ -25,7 +30,6 @@ const Footer = () => {
     getMuscles(dispatch)
   }, [dispatch])
 
-  
   const theme = useTheme()
   const matches = useMediaQuery(theme.breakpoints.up('md'))
 

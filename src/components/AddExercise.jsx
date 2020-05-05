@@ -1,7 +1,7 @@
-import React, { useContext } from 'react'
+import React from 'react'
 
-// global context
-import { GlobalContext } from '../store/GlobalContex'
+// dispatch
+import { useDispatch } from '../store/GlobalContex'
 
 // actions
 import { openNewExerciseDialog } from '../store/actions/GlobalActions'
@@ -12,10 +12,10 @@ import AddIcon from '@material-ui/icons/Add'
 
 const AddExercise = () => {
 
-  // get state & dispatch
+  // get dispatch
   const {
     dispatch,
-  } = useContext(GlobalContext)
+  } = useDispatch()
 
   return (
     <>
